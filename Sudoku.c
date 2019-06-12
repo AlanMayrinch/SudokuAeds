@@ -32,7 +32,7 @@ int menu(){
   puts("\t\t     1 -【Novo jogo】");
   puts("\t\t     2 -【Carregar】");
     puts("\t\t     3 -【Sair】");
-  printf("                     4 -【Opcao】: ");
+  printf("                     【Digite sua opcao】: ");
     scanf("%d",&opcao);
     system("clear");
     switch(opcao){
