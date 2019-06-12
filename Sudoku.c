@@ -51,24 +51,6 @@ int menu(){
       }
     }
 
-  /*  int grid(){
-      int matriz[9][9], i, j;
-
-        srand((unsigned)time(NULL));
-
-        for(i = 0; i < 9; i++){
-          for(j = 0; j < 9; j++){
-          	matriz[i][j] = (1 + rand()%9);
-          }
-        }
-        for(i = 0; i < 9; i++){
-          for(j = 0; j < 9; j++){
-            printf("%d ", matriz[i][j]);
-          }
-          printf("\n");
-        }
-        return 0;
-      }*/
       int grid(int matriz[9][9]){
         int i, j;
         //printf("\033[39m");
