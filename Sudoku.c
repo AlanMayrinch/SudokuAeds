@@ -8,21 +8,14 @@ int novo_jogo(int matriz[9][9]);
 int grid(int matriz[9][9]);
 int adicionar_jogada(int matriz[9][9]);
 int remover_jogada(int matriz[9][9]);
+int puzzleradom();
 
 int main(){
-  int matriz[9][9]={0, 6, 0, 1, 0, 4, 0, 5,  0,
-                    0, 0, 8, 3, 0, 5, 6, 0, 0,
-                    2, 0, 0, 0, 0, 0, 0, 0, 1,
-                    8, 0, 0, 4, 0, 7, 0, 0, 6,
-                    0, 0, 6, 0, 0, 0, 3, 0, 0,
-                    7, 0, 0, 9, 0, 1, 0, 0, 4,
-                    5, 0, 0, 0, 0, 0, 0, 0, 2,
-                    0, 0, 7, 2, 0, 6, 9, 0, 0,
-                    0, 4, 0, 5, 0, 8, 0, 7, 0};
+  int matriz[9][9]={0};
   printf("\n");
   bem_vindo();
   menu();
-  novo_jogo(matriz);
+  puzzleradom();
 }
 
 int menu(){
@@ -55,8 +48,15 @@ int menu(){
         int i, j;
         //printf("\033[39m");
         system("clear");
-        printf("\033[34m");
+        printf("\033[30m");
         printf("\033[1m");
+        /*for(i = 0; i < 9; i++){
+          for(j = 0; j < 9; j++){
+            printf("%d ", matriz[i][j]);
+          }
+          printf("\n");
+        }
+      }*/
         for (i = 0; i< 9; i++)
         {
           for (j = 0; j < 9; j++)
@@ -86,7 +86,7 @@ int menu(){
               if (matriz[i][j] == 0)
                 printf("|     |");
               else
-                printf("|  %i  |",matriz[i][j]);
+                printf("|  %d  |",matriz[i][j]);
             }
             printf("\n");
             for (j = 0; j< 9; j++)
@@ -108,8 +108,9 @@ int menu(){
         scanf("%d", &linha);
         printf("Informe a coluna desejada: ");
         scanf("%d",&coluna);
-        if(matriz[linha][coluna]>=1){
-          printf("Posicao Invalida,Digite outra Posicao:\n");
+        if(matriz[linha-1][coluna-1] >= 1){
+          printf("[%d][%d]Posicao Invalida,Digite outra Posicao:\n",linha,coluna);
+          printf("%d\n", matriz[linha-1][coluna-1]);
         }
         else
           break;
@@ -122,7 +123,7 @@ int menu(){
             printf("Faça sua jogada com numeros entre 1 e 9: \n");
           }
           else {
-        matriz[linha - 1][coluna - 1]=jogada;
+        matriz[linha-1][coluna-1]=jogada;
         system("clear");
         break;
         }
@@ -185,3 +186,71 @@ int menu(){
     puts("\t  ╰━━━┻━━━┻╯╰╯╰╯╱╱╱╰╯╱╰━━┻╯╱╰━┻━━━┻━━━╯");
     puts("");
 }
+
+int puzzleradom(){
+      int radom;
+      int matriz[9][9];
+      int i,j;
+      int dificuldade;
+        FILE *select;
+    printf ("Escolha a dificuldade do jogo\n");
+    printf("1 - Facil\n2 - Medio\n3 - Dificil\n");
+    scanf("%d", &dificuldade);
+    srand((unsigned)time(NULL));
+      radom = (1 + rand()%5);
+      system("clear");
+
+    switch(dificuldade){
+
+      case 1:
+       switch(radom){
+      case 1:select=fopen("facil_1.txt","rb");  break;
+      case 2:select=fopen("facil_2.txt","rb");  break;
+      case 3:select=fopen("facil_3.txt","rb");  break;
+      case 4:select=fopen("facil_4.txt","rb");  break;
+      case 5:select=fopen("facil_5.txt","rb");  break;
+        default:
+          return 0;
+      }
+      break;
+
+      case 2:
+      switch(radom){
+     case 1:select=fopen("medio_1.txt","rb");  break;
+     case 2:select=fopen("medio_2.txt","rb");  break;
+     case 3:select=fopen("medio_3.txt","rb");  break;
+     case 4:select=fopen("medio_4.txt","rb");  break;
+     case 5:select=fopen("medio_5.txt","rb");  break;
+       default:
+         return 0;
+     }
+     case 3:
+     switch(radom){
+    case 1:select=fopen("dificil_1.txt","rb");  break;
+    case 2:select=fopen("dificil_2.txt","rb");  break;
+    case 3:select=fopen("dificil_3.txt","rb");  break;
+    case 4:select=fopen("dificil_4.txt","rb");  break;
+    case 5:select=fopen("dificil_5.txt","rb");  break;
+      default:
+        return 0;
+    }
+  }
+  printf("Jogo pronto\n");
+
+  if(select == NULL) {
+printf("Erro ao abrir o arquivo!");
+return 0;
+}
+
+for(i=0;i<9;i++){
+      for(j=0;j<9;j++){
+          fscanf(select,"%d ", &matriz[i][j]);
+}
+}
+
+
+    fclose(select);
+    novo_jogo(matriz);
+
+return 0;
+  }
