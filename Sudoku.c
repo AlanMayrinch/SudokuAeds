@@ -125,7 +125,7 @@ int main(){
         }
       }
       grid(matriz);
-      novo_jogo(matriz);
+      menu_de_jogadas(matriz);
   }
 
 
@@ -239,56 +239,53 @@ int main(){
       radom = (1 + rand()%5);
       system("clear");
 
-    switch(dificuldade){
-
-      case 1:
+   if(dificuldade==1){
        switch(radom){
-      case 1:select=fopen("facil_1.txt","r");  break;
-      case 2:select=fopen("facil_2.txt","r");  break;
-      case 3:select=fopen("facil_3.txt","r");  break;
-      case 4:select=fopen("facil_4.txt","r");  break;
-      case 5:select=fopen("facil_5.txt","r");  break;
-        default:
-          return 0;
+        printf("deu nao\n");
+        case 1:select=fopen("facil_1.txt","r");  break;
+        case 2:select=fopen("facil_2.txt","r");  break;
+        case 3:select=fopen("facil_3.txt","r");  break;
+        case 4:select=fopen("facil_4.txt","r");  break;
+        case 5:select=fopen("facil_5.txt","r");  break;
       }
-      break;
-
-      case 2:
-      switch(radom){
-     case 1:select=fopen("medio_1.txt","rb");  break;
-     case 2:select=fopen("medio_2.txt","rb");  break;
-     case 3:select=fopen("medio_3.txt","rb");  break;
-     case 4:select=fopen("medio_4.txt","rb");  break;
-     case 5:select=fopen("medio_5.txt","rb");  break;
-       default:
-         return 0;
-     }
-     case 3:
-     switch(radom){
-    case 1:select=fopen("dificil_1.txt","rb");  break;
-    case 2:select=fopen("dificil_2.txt","rb");  break;
-    case 3:select=fopen("dificil_3.txt","rb");  break;
-    case 4:select=fopen("dificil_4.txt","rb");  break;
-    case 5:select=fopen("dificil_5.txt","rb");  break;
-      default:
-        return 0;
     }
-  }
-  printf("Jogo pronto\n");
-
+    if(dificuldade==2){
+      switch(radom){
+        printf("pq ta dando errro caraio\n");
+        case 1:select=fopen("medio_1.txt","r");  break;
+        case 2:select=fopen("medio_2.txt","r");  break;
+        case 3:select=fopen("medio_3.txt","r");  break;
+        case 4:select=fopen("medio_4.txt","r");  break;
+        case 5:select=fopen("medio_5.txt","r");  break;
+      }
+    } 
+     if(dificuldade==3){
+        switch(radom){
+          printf("deu nao\n");
+          case 1:select=fopen("dificil_1.txt","rb");  break;
+          case 2:select=fopen("dificil_2.txt","rb");  break;
+          case 3:select=fopen("dificil_3.txt","rb");  break;
+          case 4:select=fopen("dificil_4.txt","rb");  break;
+          case 5:select=fopen("dificil_5.txt","rb");  break;
+        }
+      }
   if(select == NULL) {
-printf("Erro ao abrir o arquivo!");
-return 0;
-}
+    printf("Erro ao abrir o arquivo!");
+    return 0;
+  }
+  else{
+    printf("Jogo pronto\n");
+  }
 
-for(i=0;i<9;i++){
+  for(i=0;i<9;i++){
       for(j=0;j<9;j++){
           fscanf(select,"%d ", &matriz[i][j]);
-}
-}
+      }
+    }
 
 
     fclose(select);
+    grid(matriz);
     menu_de_jogadas(matriz);
 
 return 0;
