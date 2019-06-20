@@ -5,13 +5,13 @@
 
 //int bem_vindo();
 int menu();
-int novo_jogo(int matriz[9][9]);
+int menu_de_jogadas(int matriz[9][9]);
 int grid(int matriz[9][9]);
 int adicionar_jogada(int matriz[9][9]);
 int remover_jogada(int matriz[9][9]);
 int salvar_progresso(int matriz [9][9]);
 int carregar_jogo();
-int puzzleradom();
+int novo_jogo();
 
 int main(){
   printf("\n");
@@ -38,9 +38,10 @@ int main(){
           printf("\tO objetivo do Sudoku é preencher todos os espaços vazios\n");
           printf("\tcom numeros de 1 a 9. Porem o numero escolhido nao pode estar se\n");
           printf("\trepetindo na mesma coluna, linha e bloco.\n");
-          puzzleradom();
+          novo_jogo();
          break;
-        case 2: carregar_jogo();
+        case 2: 
+          carregar_jogo();
           break;
         default:
          return 0;
@@ -138,7 +139,7 @@ int main(){
         printf("Vc removeu a jogada da Linha %d Coluna %d\n",linha, coluna);
         matriz[linha-1][coluna-1]=0;
         system("clear");
-        novo_jogo(matriz);
+        menu_de_jogadas(matriz);
   }  
   int salvar_progresso(int matriz[9][9]){
       
@@ -148,6 +149,7 @@ int main(){
     exit(1);
     }
     int i,j;
+    char resposta;
     for(i=0;i<9;i++){
       for(j=0;j<9;j++){
         fprintf(save,"%d ",matriz[i][j]);
@@ -156,10 +158,10 @@ int main(){
     }
     
     printf("Jogo Salvo Com Sucesso.\n");
+    menu_de_jogadas(matriz);
     fclose(save);
-    char c;
-    printf("Deseja continuar ?(s/n):");
-    scanf("%c",&c);
+   
+  }
   int carregar_jogo(){
     int matriz[9][9];
     system("cls");
@@ -178,7 +180,7 @@ int main(){
       }
     }
       fclose(save);
-      novo_jogo(matriz);
+      menu_de_jogadas(matriz);
   }
 
   /*int bem_vindo(){
@@ -202,7 +204,7 @@ int main(){
     puts("");
 }*/
 
-  int novo_jogo(int matriz [9][9]){
+  int menu_de_jogadas(int matriz [9][9]){
     int op;
   printf("Digite sua opcao: \n");
   printf("1-Nova jogada.\n");
@@ -224,7 +226,7 @@ int main(){
       return 0;
     }
   }
-  int puzzleradom(){
+  int novo_jogo(){
       int radom;
       int matriz[9][9];
       int i,j;
@@ -287,7 +289,7 @@ for(i=0;i<9;i++){
 
 
     fclose(select);
-    novo_jogo(matriz);
+    menu_de_jogadas(matriz);
 
 return 0;
   }
