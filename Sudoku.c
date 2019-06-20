@@ -115,7 +115,7 @@ int main(){
         printf("Faça sua jogada com numeros entre 1 e 9: ");
         scanf("%d", &jogada);
           if(jogada<1||jogada>9){
-            printf("Faça sua jogada com numeros entre 1 e 9: \n");
+            printf("Faça sua jogada com numeros entre 1 e 9:");
           }
           else {
         matriz[linha-1][coluna-1]=jogada;
@@ -142,7 +142,7 @@ int main(){
   }  
   int salvar_progresso(int matriz[9][9]){
       
-      FILE* save = fopen("saved.bin","wb");
+      FILE *save = fopen("saved.txt","w");
     if (save == NULL) {
     printf("\nERRO SAVE COMRROPIDO.\n");
     exit(1);
@@ -150,21 +150,22 @@ int main(){
     int i,j;
     for(i=0;i<9;i++){
       for(j=0;j<9;j++){
-        fprintf(save,"%d",matriz[i][j]);
+        fprintf(save,"%d ",matriz[i][j]);
       }
-       fprintf(save,"\n",matriz[i][j]);
+      fprintf(save, "\n");
     }
     
     printf("Jogo Salvo Com Sucesso.\n");
     fclose(save);
-    novo_jogo(matriz);
-  }
+    char c;
+    printf("Deseja continuar ?(s/n):");
+    scanf("%c",&c);
   int carregar_jogo(){
     int matriz[9][9];
     system("cls");
     int i=0,j=0;
     int recebe[9][9];
-    FILE *save=fopen("saved.txt","rb");
+    FILE *save=fopen("saved.txt","r");
     if (save == NULL) {
       printf("\nERRO SAVE COMRROPIDO.\n");
       exit(1);
@@ -173,10 +174,11 @@ int main(){
 
      for(i=0;i<9;i++){
       for(j=0;j<9;j++){
-          fscanf(save,"%d ",&matriz[i][j]);
+          fscanf(save,"%d",&matriz[i][j]);
       }
     }
-    novo_jogo(matriz);
+      fclose(save);
+      novo_jogo(matriz);
   }
 
   /*int bem_vindo(){
@@ -216,8 +218,8 @@ int main(){
       case 2: grid(matriz); 
               remover_jogada(matriz);
               break;
-      //case 3: salvar_progresso(nome);
-              //break;
+      case 3: salvar_progresso(matriz);
+              break;
       default: printf("VC E FRACO LHE FALTA SODOKU");
       return 0;
     }
