@@ -1,4 +1,4 @@
-#include<stdio.h>
+﻿#include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
 
@@ -71,13 +71,7 @@ int menu(){
                printf("_____  ");
              }
            }
-           printf("\n");
-           for (j = 0; j < 9; j++)
-           {
-              if (j == 3 || j == 6)
-                printf(" ");
-              printf("|     |");
-            }
+
             printf("\n");
             for (j = 0; j < 9; j++)
             {
