@@ -241,7 +241,6 @@ int main(){
 
    if(dificuldade==1){
        switch(radom){
-        printf("deu nao\n");
         case 1:select=fopen("facil_1.txt","r");  break;
         case 2:select=fopen("facil_2.txt","r");  break;
         case 3:select=fopen("facil_3.txt","r");  break;
@@ -251,7 +250,6 @@ int main(){
     }
     if(dificuldade==2){
       switch(radom){
-        printf("pq ta dando errro caraio\n");
         case 1:select=fopen("medio_1.txt","r");  break;
         case 2:select=fopen("medio_2.txt","r");  break;
         case 3:select=fopen("medio_3.txt","r");  break;
@@ -261,7 +259,6 @@ int main(){
     } 
      if(dificuldade==3){
         switch(radom){
-          printf("deu nao\n");
           case 1:select=fopen("dificil_1.txt","rb");  break;
           case 2:select=fopen("dificil_2.txt","rb");  break;
           case 3:select=fopen("dificil_3.txt","rb");  break;
