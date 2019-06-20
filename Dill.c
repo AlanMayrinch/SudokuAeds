@@ -30,7 +30,7 @@ int main(){
       ///puts("\t\t     3 -【Sair】");
       printf("[1-Novo Jogo]\n[2-Carregar]\n[3-Sair]\n");
       scanf("%d",&opcao);
-      system("clear");
+      system("clear||cls");
       switch(opcao){
 
         case 1:
@@ -50,7 +50,7 @@ int main(){
     int grid(int matriz[9][9]){
         int i, j;
         //printf("\033[39m");
-        system("clear");
+        system("clear||cls");
         for(i=0;i<9;i++){
           for(j=0;j<9;j++){
             printf("%d ",matriz[i][j]);
@@ -120,7 +120,7 @@ int main(){
           }
           else {
         matriz[linha-1][coluna-1]=jogada;
-        system("clear");
+        system("clear||cls");
         break;
         }
       }
@@ -130,17 +130,35 @@ int main(){
 
 
   int remover_jogada(int matriz[9][9]){
-  int linha ,coluna;
+    int linha ,coluna;
+    int i,j,original[9][9];
+      FILE *inalteravel=fopen("ultimojogo.txt","r");
+      if (inalteravel == NULL) {
+        printf("\nERRO AO INICIAR.\n");
+        exit(1);
+    }
+     for(i=0;i<9;i++){
+      for(j=0;j<9;j++){
+          fscanf(inalteravel,"%d",&original[i][j]);
+      }
+    }
+      fclose(inalteravel);
         printf("Remova uma jogada:\n");
         printf("Informe a linha desejada: ");
         scanf("%d", &linha);
         printf("Informe a coluna desejada: ");
         scanf("%d",&coluna);
-        printf("Vc removeu a jogada da Linha %d Coluna %d\n",linha, coluna);
+        if(original[linha-1][coluna-1]!=0){
+          printf("Posicao inalteravel!\n");
+        }
+        else{
+        printf("Voce removeu a jogada da Linha %d Coluna %d\n",linha, coluna);
         matriz[linha-1][coluna-1]=0;
-        system("clear");
+      }
+        system("clear||cls");
+        grid(matriz);
         menu_de_jogadas(matriz);
-  }  
+  }
   int salvar_progresso(int matriz[9][9]){
       
       FILE *save = fopen("saved.txt","w");
@@ -164,7 +182,7 @@ int main(){
   }
   int carregar_jogo(){
     int matriz[9][9];
-    system("cls");
+    system("clear||cls");
     int i=0,j=0;
     int recebe[9][9];
     FILE *save=fopen("saved.txt","r");
@@ -237,7 +255,7 @@ int main(){
     scanf("%d", &dificuldade);
     srand((unsigned)time(NULL));
       radom = (1 + rand()%5);
-      system("clear");
+      system("cls||clear");
 
    if(dificuldade==1){
        switch(radom){
@@ -279,9 +297,21 @@ int main(){
           fscanf(select,"%d ", &matriz[i][j]);
       }
     }
-
-
     fclose(select);
+
+    FILE *original = fopen("ultimojogo.txt","w");
+    if (original == NULL) {
+    printf("\nERRO AO ABRIR.\n");
+    exit(1);
+    }
+    for(i=0;i<9;i++){
+      for(j=0;j<9;j++){
+        fprintf(original,"%d ",matriz[i][j]);
+      }
+      fprintf(original, "\n");
+    }
+    fclose(original);
+    
     grid(matriz);
     menu_de_jogadas(matriz);
 
