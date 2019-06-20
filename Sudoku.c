@@ -135,7 +135,7 @@ int menu(){
         printf("Informe a coluna desejada: ");
         scanf("%d",&coluna);
         printf("Vc removeu a jogada da Linha %d Coluna %d\n",linha, coluna);
-        matriz[linha][coluna]=0;
+        matriz[linha - 1][coluna - 1]=0;
         system("clear");
         grid(matriz);
         novo_jogo(matriz);
