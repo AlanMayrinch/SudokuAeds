@@ -242,7 +242,7 @@ int main(){
     printf("\033[36m") ;
     printf("\033[1m");
     printf("\033[05m");
-    printf("\t\tBem Vindo ao Sudoku");
+    printf("\t\t   Bem Vindo ao Sudoku\n");
 }
 
   //comeco da funcao menu_de_jogadas
@@ -252,7 +252,7 @@ int main(){
   salvar progresso e a funçao verificar a soluçao. que so é chamada depois que todos os
   numeros da matriz forem preenchidos.*/
 
-    intint op,zero=0;
+    int op,zero=0;
     puts("\t\t     1 -【Nova Jogada】");
   puts("\t\t     2 -【Excluir Jogada】");
   puts("\t\t     3 -【Salvar progresso e sair】");
