@@ -242,7 +242,7 @@ int main(){
     printf("\033[36m") ;
     printf("\033[1m");
     printf("\033[05m");
-    printf("\t\tBem Vindo ao Sudoku);
+    printf("\t\tBem Vindo ao Sudoku");
 }
 
   //comeco da funcao menu_de_jogadas
