@@ -242,20 +242,7 @@ int main(){
     printf("\033[36m") ;
     printf("\033[1m");
     printf("\033[05m");
-    printf("\t\t┏━━━┳┓ ┏┳━━━┳━━━┳┓┏━┳┓ ┏┓\n");
-    printf("\t\t┃┏━┓┃┃ ┃┣┓┏┓┃┏━┓┃┃┃┏┫┃ ┃┃\n");
-    printf("\t\t┃┗━━┫┃ ┃┃┃┃┃┃┃ ┃┃┗┛┛┃┃ ┃┃\n");
-    printf("\t\t┗━━┓┃┃ ┃┃┃┃┃┃┃ ┃┃┏┓┃┃┃ ┃┃\n");
-    printf("\t\t┃┗━┛┃┗━┛┣┛┗┛┃┗━┛┃┃┃┗┫┗━┛┃\n");
-    printf("\t\t┗━━━┻━━━┻━━━┻━━━┻┛┗━┻━━━┛\n");
-    printf("\n");
-
-    printf("\t  ╭━━╮╭━━━┳━╮╭━╮ ╭╮  ╭┳━━┳━╮ ╭┳━━━┳━━━╮\n");
-    printf("\t  ┃╭╮┃┃╭━━┫┃╰╯┃┃ ┃╰╮╭╯┣┫┣┫┃╰╮┃┣╮╭╮┃╭━╮┃\n");
-    printf("\t  ┃╰╯╰┫╰━━┫╭╮╭╮┃ ╰╮┃┃╭╯┃┃┃╭╮╰╯┃┃┃┃┃┃ ┃┃\n");
-    printf("\t  ┃╭━╮┃╭━━┫┃┃┃┃┣  ┫╰╯┃ ┃┃┃┃╰╮┃┃┃┃┃┃┃┃┃\n");
-    printf("\t  ┃╰━╯┃╰━━┫┃┃┃┃┣  ┻╮╭╯╭┫┣┫┃ ┃┃┣╯╰╯┃╰━╯┃\n");
-    printf("\t  ╰━━━┻━━━┻╯╰╯╰╯   ╰╯ ╰━━┻╯ ╰━┻━━━┻━━━╯\n");
+    printf("\t\tBem Vindo ao Sudoku);
 }
 
   //comeco da funcao menu_de_jogadas
@@ -265,12 +252,11 @@ int main(){
   salvar progresso e a funçao verificar a soluçao. que so é chamada depois que todos os
   numeros da matriz forem preenchidos.*/
 
-    int op,zero=0;
-    printf("Digite sua opcao: \n");//printa a mensagem na tela.
-    printf("1-Nova jogada.\n");//printa a mensagem na tela.
-    printf("2-Excluir jogada.\n");//printa a mensagem na tela.
-    printf("3-Salvar progresso e sair.\n");//printa a mensagem na tela.
-    printf("4-Desistir.\n");//printa a mensagem na tela.
+    intint op,zero=0;
+    puts("\t\t     1 -【Nova Jogada】");
+  puts("\t\t     2 -【Excluir Jogada】");
+  puts("\t\t     3 -【Salvar progresso e sair】");
+  puts("\t\t     4 -【Desistir】");
       for(int i=0;i<9;i++){
         for(int j=0;j<9;j++){
           if(matriz[i][j]==0){
