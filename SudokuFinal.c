@@ -295,7 +295,9 @@ int main(){
               break;
       case 3: salvar_progresso(matriz);
               break;
-      case 4: printf("VC E FRACO LHE FALTA SODOKU\n\n");//printa a mensagem na tela.
+      case 4: system("clear||cls");
+              printf("\n");
+              printf("\tVC E FRACO LHE FALTA SODOKU\n\n");//printa a mensagem na tela.
               menu(); // chama a funçao menu, para que o usuario escolha um novo jogo,reniciando seu tempo, ou saia do jogo.
               return 0;
       case 5: verifica_resolucao(matriz);
