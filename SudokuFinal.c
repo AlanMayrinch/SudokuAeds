@@ -331,7 +331,7 @@ int main(){
       //ler um arquivo, que possui uma matriz 9x9, aleatoriamente, atraves do numero sorteado de 1 a 5, pega umas das 5 matrizes da diculdade
       // que o usuario selecionar
       if(dificuldade==1){
-       switch(4){
+       switch(radom){
         case 1:select=fopen("facil_1.txt","r");  break;
         case 2:select=fopen("facil_2.txt","r");  break;
         case 3:select=fopen("facil_3.txt","r");  break;
