@@ -252,7 +252,7 @@ int main(){
   salvar progresso e a funçao verificar a soluçao. que so é chamada depois que todos os
   numeros da matriz forem preenchidos.*/
 
-    int op,zero=0;
+       int op,zero=0;
     puts("\t\t     1 -【Nova Jogada】");
   puts("\t\t     2 -【Excluir Jogada】");
   puts("\t\t     3 -【Salvar progresso e sair】");
@@ -265,10 +265,10 @@ int main(){
         }
       }
       if(zero==0){
-      printf("5-Verificar a solucao.\n");//printa a mensagem na tela.
+      printf("\t\t     5-【Verificar a solucao】\n");//printa a mensagem na tela.
       }
 
-    printf("Opcao escolhida: ");//printa a mensagem na tela.
+    printf("\t\t     Opcao escolhida: ");//printa a mensagem na tela.
     scanf("%d",&op);
     printf("\n\n");
 
