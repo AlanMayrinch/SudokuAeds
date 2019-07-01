@@ -3,7 +3,7 @@
 #include<time.h>
 #include <sys/time.h>
 
-//int bem_vindo();
+int bem_vindo();
 int menu();
 int menu_de_jogadas(int matriz[9][9]);
 int imprime_sudoku(int matriz[9][9]);
@@ -111,38 +111,41 @@ int main(){
     }
 
   // comeco da funcao adicionar_jogada
-   int adicionar_jogada(int matriz[9][9]){
-     /*esta funçao adciona um jogada, ela recebe matriz atraves do menu de jogadas, o jogador
-     deve informa um posição que deseja realizar sua jogada, entao a funçao testa se a posição digitada é
-     valida(para ser valido o valo da posiçao tem de ser iguall a 0)
-     se nao for invalida entao o mostrado a posição que ele selecionou, e ele pode fazer uma jogada entre 1 e 9
-     mas caso ele digite um valor diferente, o jogo volta ao menu de jogadas e aparece na tela uma mensagem que diz
-     para fazer a jogada com numero entre 1 e 9*/
-        int linha , coluna, jogada;
-        printf("Informe a linha desejada: ");//printa a mensagem na tela.
-        scanf("%d", &linha);
-        printf("Informe a coluna desejada: ");//printa a mensagem na tela.
-        scanf("%d",&coluna);
-        if(matriz[linha-1][coluna-1] >= 1){
+  int adicionar_jogada(int matriz[9][9]){
+    /*esta funçao adciona um jogada, ela recebe matriz atraves do menu de jogadas, o jogador
+    deve informa um posição que deseja realizar sua jogada, entao a funçao testa se a posição digitada é
+    valida(para ser valido o valo da posiçao tem de ser iguall a 0)
+    se nao for invalida entao o mostrado a posição que ele selecionou, e ele pode fazer uma jogada entre 1 e 9
+    mas caso ele digite um valor diferente, o jogo volta ao menu de jogadas e aparece na tela uma mensagem que diz
+    para fazer a jogada com numero entre 1 e 9*/
+       int linha , coluna, jogada;
+       printf("Informe a linha desejada: ");//printa a mensagem na tela.
+       scanf("%d", &linha);
+       printf("Informe a coluna desejada: ");//printa a mensagem na tela.
+       scanf("%d",&coluna);
+       if(matriz[linha-1][coluna-1] >= 1){
 
-          printf("[%d][%d]Posicao Invalida,Digite outra Posicao:\n",linha,coluna);//printa a mensagem na tela.
-          menu_de_jogadas(matriz);
-        }
-        else{
-          printf("Linha %d Coluna %d\n",linha, coluna);
-          printf("Faça sua jogada com numeros entre 1 e 9: ");//printa a mensagem na tela.
-          scanf("%d", &jogada);
-          if(jogada<1||jogada>9){
-            printf("Faça sua jogada com numeros entre 1 e 9:");//printa a mensagem na tela.
-          }
-          else {
-          matriz[linha-1][coluna-1]=jogada;
-          system("clear||cls");
-          imprime_sudoku(matriz);// a matriz é printada na tela(pela funçao imprime_matriz), porem modificada pelo jogador
-          menu_de_jogadas(matriz);// o jogador sera levada de volta para o menu_de_jogadas.
-          }
-        }
-  }
+         printf("[%d][%d]Posicao Invalida,Digite outra Posicao:\n",linha,coluna);//printa a mensagem na tela.
+         menu_de_jogadas(matriz);
+       }
+       else{
+         printf("Linha %d Coluna %d\n",linha, coluna);
+         printf("Faça sua jogada com numeros entre 1 e 9: ");//printa a mensagem na tela.
+         scanf("%d", &jogada);
+         if(jogada<1||jogada>9){
+           system("clear||cls");
+           imprime_sudoku(matriz);// a matriz é printada na tela(pela funçao imprime_matriz), porem modificada pelo jogador
+           printf("Opcao invalida\n");//printa a mensagem na tela.
+           menu_de_jogadas(matriz);// o jogador sera levada de volta para o menu_de_jogadas.
+         }
+         else {
+         matriz[linha-1][coluna-1]=jogada;
+         system("clear||cls");
+         imprime_sudoku(matriz);// a matriz é printada na tela(pela funçao imprime_matriz), porem modificada pelo jogador
+         menu_de_jogadas(matriz);// o jogador sera levada de volta para o menu_de_jogadas.
+         }
+       }
+ }
 
   //comeco da funcao remover_jogada
   int remover_jogada(int matriz[9][9]){
@@ -263,10 +266,11 @@ int main(){
   numeros da matriz forem preenchidos.*/
 
     int op,zero=0;
-    puts("\t\t     1 -【Nova Jogada】");
-  puts("\t\t     2 -【Excluir Jogada】");
-  puts("\t\t     3 -【Salvar progresso e sair】");
-  puts("\t\t     4 -【Desistir】");
+    printf("Digite sua opcao: \n");//printa a mensagem na tela.
+    printf("1-Nova jogada.\n");//printa a mensagem na tela.
+    printf("2-Excluir jogada.\n");//printa a mensagem na tela.
+    printf("3-Salvar progresso e sair.\n");//printa a mensagem na tela.
+    printf("4-Desistir.\n");//printa a mensagem na tela.
       for(int i=0;i<9;i++){
         for(int j=0;j<9;j++){
           if(matriz[i][j]==0){
@@ -274,12 +278,11 @@ int main(){
           }
         }
       }
-    if(zero==0){
+      if(zero==0){
       printf("5-Verificar a solucao.\n");//printa a mensagem na tela.
-      printf("\n");
       }
 
-    printf("\t\t\tOpcao escolhida: ");//printa a mensagem na tela.
+    printf("Opcao escolhida: ");//printa a mensagem na tela.
     scanf("%d",&op);
     printf("\n\n");
 
@@ -292,16 +295,16 @@ int main(){
               break;
       case 3: salvar_progresso(matriz);
               break;
-      case 4: printf("\t\t VOCE E FRACO LHE FALTA SODOKU\n\n");//printa a mensagem na tela.
+      case 4: printf("VC E FRACO LHE FALTA SODOKU\n\n");//printa a mensagem na tela.
               menu(); // chama a funçao menu, para que o usuario escolha um novo jogo,reniciando seu tempo, ou saia do jogo.
               return 0;
       case 5: verifica_resolucao(matriz);
               break;
 
       default: system("clear||cls");
-               imprime_sudoku(matriz);
-               printf("Opcao invalida\n");//printa a mensagem na tela.
-               menu_de_jogadas(matriz);// o jogador sera levada de volta para o menu_de_jogadas.
+              imprime_sudoku(matriz);
+              printf("Opcao invalida\n");//printa a mensagem na tela.
+              menu_de_jogadas(matriz);// o jogador sera levada de volta para o menu_de_jogadas.
     }
   }
 
@@ -504,6 +507,8 @@ int main(){
         printf("Solucao Correta,Parabens !\n");//printa a mensagem na tela.
       }
       else{
+        system("clear||cls");
+        imprime_sudoku(matriz);
         printf("Que pena,solucao Incorreta.\n");//printa a mensagem na tela.
         menu_de_jogadas(matriz);
       }
